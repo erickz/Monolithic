@@ -13,16 +13,16 @@ class CreateBasicTables extends Migration {
 	public function up()
 	{
 		Schema::create('users', function($table)
-	 {
-			 $table->increments('id');
-			 $table->string('email')->unique();
-			 $table->string('name');
-			 $table->timestamps();
-	 });
+	  {
+			$table->increments('id');
+			$table->string('email')->unique();
+			$table->string('name');
+			$table->timestamps();
+	  });
 
 		Schema::create('posts', function($table)
 		{
-			$table->increment();
+			$table->increments('id');
 			$table->integer('user_id')->unsigned();
 			$table->string('name', 150);
 			$table->timestamps();
@@ -30,7 +30,7 @@ class CreateBasicTables extends Migration {
 
 		Schema::create('comments', function($table)
 		{
-			$table->increment();
+			$table->increments('id');
 			$table->integer('post_id')->unsigned();
 			$table->text('text');
 			$table->timestamps();
