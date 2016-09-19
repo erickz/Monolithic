@@ -25,6 +25,7 @@ class CreateBasicTables extends Migration {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
 			$table->string('name', 150);
+			$table->text('content');
 			$table->timestamps();
 		});
 
@@ -54,8 +55,8 @@ class CreateBasicTables extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('posts');
 		Schema::drop('comments');
+		Schema::drop('posts');
 		Schema::drop('users');
 	}
 
