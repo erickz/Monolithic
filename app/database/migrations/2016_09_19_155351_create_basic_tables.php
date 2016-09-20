@@ -15,15 +15,16 @@ class CreateBasicTables extends Migration {
 		Schema::create('users', function($table)
 	  {
 			$table->increments('id');
-			$table->string('email')->unique();
 			$table->string('name');
+			$table->string('email')->unique();
+			$table->string('password');
+			$table->rememberToken();
 			$table->timestamps();
 	  });
 
 		Schema::create('posts', function($table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned();
 			$table->string('name', 150);
 			$table->text('content');
 			$table->timestamps();

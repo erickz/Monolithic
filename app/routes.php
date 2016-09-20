@@ -39,21 +39,42 @@ Route::delete('/usuarios/{id}', [
 
 //Posts
 Route::get('/posts', [
-	'as'			=> 'users.get',
-	'uses'		=> 'UsersController@get'
+	'as'			=> 'posts.get',
+	'uses'		=> 'PostsController@get'
 ]);
 
 Route::post('/posts', [
-	'as'			=> 'users.post',
-	'uses'		=> 'UsersController@store'
+	'as'			=> 'posts.post',
+	'uses'		=> 'PostsController@store'
 ]);
 
 Route::put('/posts/{id}', [
-	'as'			=> 'users.put',
-	'uses'		=> 'UsersController@update'
+	'as'			=> 'posts.put',
+	'uses'		=> 'PostsController@update'
 ]);
 
 Route::delete('/posts/{id}', [
-	'as'			=> 'users.delete',
-	'uses'		=> 'UsersController@delete'
+	'as'			=> 'posts.delete',
+	'uses'		=> 'PostsController@delete'
 ]);
+
+//Comments
+// Route::get('/comments', [
+// 	'as'			=> 'comments.get',
+// 	'uses'		=> 'CommentsController@get'
+// ]);
+//
+// Route::post('/comments', [
+// 	'as'			=> 'comments.post',
+// 	'uses'		=> 'CommentsController@store'
+// ]);
+//
+// Route::put('/comments/{id}', [
+// 	'as'			=> 'comments.put',
+// 	'uses'		=> 'CommentsController@update'
+// ]);
+//
+// Route::delete('/comments/{id}', [
+// 	'as'			=> 'comments.delete',
+// 	'uses'		=> 'CommentsController@delete'
+// ]);

@@ -1,8 +1,5 @@
 <?php
 
-use User;
-use Input;
-
 class UsersController extends BaseController {
 
 	/**
@@ -19,8 +16,10 @@ class UsersController extends BaseController {
 		if (! $user)
 			return 0;
 
+		$user->api_token = str_random(60);
 		$user->name = Input::get('name');
 		$user->email = Input::get('email');
+		$user->password = Input::get('password');
 		$user->save();
 
 		return $user;
