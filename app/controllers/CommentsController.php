@@ -2,6 +2,13 @@
 
 class CommentsController extends BaseController {
 
+	private $commentHelper = NULL;
+
+	public function __construct(CommentHelper $commentHelper)
+	{
+		$this->commentHelper = $commentHelper;
+	}
+
 	/**
 	 * Fill the data
 	 * @return Comment
@@ -25,7 +32,7 @@ class CommentsController extends BaseController {
 
 	public function get()
 	{
-		return Comment::all();
+		return $this->commentHelper->get();
 	}
 
 	public function store()

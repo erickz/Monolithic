@@ -37,6 +37,11 @@ Route::delete('/usuarios/{id}', [
 	'uses'		=> 'UsersController@delete'
 ]);
 
+Route::get('/usuarios/login', [
+	'as'			=> 'users.login',
+	'uses'		=> 'UsersController@login'
+]);
+
 //Posts
 Route::get('/posts', [
 	'as'			=> 'posts.get',
@@ -59,10 +64,10 @@ Route::delete('/posts/{id}', [
 ]);
 
 //Comments
-// Route::get('/comments', [
-// 	'as'			=> 'comments.get',
-// 	'uses'		=> 'CommentsController@get'
-// ]);
+Route::get('/comentarios', [
+	'as'			=> 'comments.get',
+	'uses'		=> 'CommentsController@get'
+]);
 //
 // Route::post('/comments', [
 // 	'as'			=> 'comments.post',

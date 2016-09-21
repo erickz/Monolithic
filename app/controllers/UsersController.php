@@ -51,4 +51,14 @@ class UsersController extends BaseController {
 
 		return 'Registro apagado com sucesso!';
 	}
+
+	public function login()
+	{
+		$success = Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')]);
+
+      if ($success)
+        return 'Login realizado com sucesso!';
+      else
+        return 'Não foi possível realizar o login';
+	}
 }

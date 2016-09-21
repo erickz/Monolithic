@@ -14,6 +14,14 @@ class UsersTableSeeder extends Seeder
 		$rows = array(
 			[
 				'api_token' => str_random(60),
+				'email'			=> 'system@system.com'
+				'name'			=> 'Sistema',
+				'password'	=> 'teste',
+				'created_at' => date('Y-m-d H:i:s'),
+				'updated_at' => date('Y-m-d H:i:s')
+			],
+			[
+				'api_token' => str_random(60),
 				'email'			=> 'teste@teste.com'
 				'name'			=> 'Testador',
 				'password'	=> 'teste',
