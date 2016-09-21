@@ -68,6 +68,16 @@ Route::get('/comentarios', [
 	'as'			=> 'comments.get',
 	'uses'		=> 'CommentsController@get'
 ]);
+
+Route::get('/comentarios/{postId}', [
+	'as'			=> 'comments.getByPost',
+	'uses'		=> 'CommentsController@getByPost'
+]);
+
+Route::get('/comentarios-criar', [
+	'as'			=> 'comments.store',
+	'uses'		=> 'CommentsController@store'
+]);
 //
 // Route::post('/comments', [
 // 	'as'			=> 'comments.post',

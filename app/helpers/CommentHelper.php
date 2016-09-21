@@ -31,17 +31,49 @@ class CommentHelper {
    * [buildUrl description]
    * @return [type] [description]
   */
-  private function run($url = '')
+  private function buildUrl($url = '')
   {
-    return Curl::to(Config::get('comments.url') . $url . '?api_token=' . $this->getToken())->get();
+    return Curl::to(Config::get('comments.url') . $url . '?api_token=' . $this->getToken());
+  }
+
+	/**
+	 * [runGet description]
+	 * @param  [type] $url [description]
+	 * @return [type]      [description]
+	*/
+	public function runGet($url = '')
+	{
+		return $this->buildUrl($url)->get();
+	}
+
+	/**
+	 * [runPost description]
+	 * @param  string $url [description]
+	 * @return [type]      [description]
+	*/
+	public function runPost($url = '')
+	{
+		return $this->buildUrl($url)->withData( Input::all() )->post();
+	}
+
+  /**
+   * Get the comments
+   * @return
+  */
+  public function get($postId = NULL)
+  {
+		if ( ! $postId )
+    	return $this->runGet('get-comments');
+		else
+			return $this->runGet('comments/' . $postId);
   }
 
   /**
    * Get the comments
    * @return
   */
-  public function get()
+  public function store()
   {
-    return $this->run('get-comments');
+		return $this->runPost('create-comment');
   }
 }

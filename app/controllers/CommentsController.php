@@ -35,11 +35,14 @@ class CommentsController extends BaseController {
 		return $this->commentHelper->get();
 	}
 
+	public function getByPost($postId)
+	{
+		return $this->commentHelper->get($postId);
+	}
+
 	public function store()
 	{
-		$comment = $this->fill();
-
-		return 'Registro criado com sucesso!';
+		return $this->commentHelper->store();
 	}
 
 	public function update($id)
