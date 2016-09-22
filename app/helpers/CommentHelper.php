@@ -33,7 +33,7 @@ class CommentHelper {
   */
   private function buildUrl($url = '')
   {
-    return Curl::to(Config::get('comments.url') . $url . '?api_token=' . $this->getToken());
+    return Config::get('comments.url') . $url . '?api_token=' . $this->getToken();
   }
 
 	/**
@@ -43,7 +43,7 @@ class CommentHelper {
 	*/
 	public function runGet($url = '')
 	{
-		return $this->buildUrl($url)->get();
+		return Curl::to($this->buildUrl($url));
 	}
 
 	/**
@@ -53,7 +53,7 @@ class CommentHelper {
 	*/
 	public function runPost($url = '')
 	{
-		return $this->buildUrl($url)->withData( Input::all() )->post();
+		return Curl::to($this->buildUrl($url))->withData( Input::all() );
 	}
 
   /**
@@ -63,9 +63,9 @@ class CommentHelper {
   public function get($postId = NULL)
   {
 		if ( ! $postId )
-    	return $this->runGet('get-comments');
+    	return $this->runGet('get-comments')->get();
 		else
-			return $this->runGet('comments/' . $postId);
+			return $this->runGet('comments/' . $postId)->get();
   }
 
   /**
@@ -74,6 +74,6 @@ class CommentHelper {
   */
   public function store()
   {
-		return $this->runPost('create-comment');
+		return $this->runPost('create-comment')->post();
   }
 }
